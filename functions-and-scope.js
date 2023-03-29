@@ -3,6 +3,9 @@
 // Tip: je mag hier geen ingebouwde object methoden gebruiken, dus daar hoef je niet naar te kijken.
 
 const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
+const gradesA = [6, 4, 5]
+const gradesB = [8, 9, 4, 6, 10]
+console.log(grades)
 
 /* Opdracht  1: Cum Laude */
 
@@ -14,6 +17,49 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan bijhouden?
 // Log het antwoord in de terminal.
 
+// Met een arrow function en return value
+const cumLaude = () => {
+    let cumLaude = null
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            cumLaude ++
+        }
+    }
+    return cumLaude
+}
+console.log(cumLaude())
+
+// Normale function met console log inplaats van return value
+function cumLaudeA() {
+    let counter = null
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            counter ++
+        }
+    }
+    console.log(counter)
+}
+cumLaudeA()
+
+// Met een nieuwe array en felicitaties
+
+const OnlyCumLaudeArray = []
+const cumLaudeArray = () => {
+
+    for (let i = 0; i < grades.length; i++) {
+        if (grades[i] >= 8) {
+            OnlyCumLaudeArray.push(grades[i])
+        }
+    }
+    return OnlyCumLaudeArray
+}
+cumLaudeArray()
+for (let i = 0; i < OnlyCumLaudeArray.length; i++) {
+    console.log('Gefeliciteerd! Je hebt een ' + OnlyCumLaudeArray[i] + ' gehaald.')
+}
+
+
+
 // ---- Verwachte uitkomst: 6
 
 
@@ -21,6 +67,23 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf een functie genaamd cumLaude, die een array van cijfers verwacht (zoals grades) en het aantal Cum laude studenten teruggeeft. Gebruik hiervoor jouw antwoord van 1a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array met eindcijfers willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+
+function moreCumLaude(conditon, gradeList ) {
+    let newGradList =[]
+    for (let i = 0; i < grades.length; i++) {
+        if (gradeList[i] >= conditon) {
+            newGradList.push(gradeList[i])
+        }
+    }
+    return newGradList
+}
+
+const cumLaudeGardelist = moreCumLaude(8, grades)
+console.log(cumLaudeGardelist)
+const cumLaudeGardelistA = moreCumLaude(8, gradesA)
+console.log(cumLaudeGardelistA)
+const cumLaudeGardelistB = moreCumLaude(8, gradesB)
+console.log(cumLaudeGardelistB)
 
 // ---- Verwachte uitkomsten:
 // cumLaude(grades) geeft 6
@@ -40,6 +103,8 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // * Hoe zorgt ik ervoor dat ik alle waardes uit de array kan langslopen, ook als de array wel 100 entries zou bevatten?
 // Log het antwoord in de terminal.
 
+// Ik Ben niet zo goed in het omscchrijven an de stapjes. Ik probeer dingen uit ik weer niet helemaal van te voren wat ik doe
+
 // ---- Verwachte uitkomst: 6.642857142857143
 
 
@@ -47,6 +112,16 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf een functie genaamd averageGrade, die een array van cijfers verwacht (zoals grades) en het gemiddelde cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 2a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+
+const avarage = (gradeList) => {
+    let total = null
+    for (let i = 0; i < gradeList.length; i++) {
+        total += gradeList[i]
+    }
+    return total / gradeList.length
+}
+const avarageGrade = avarage(grades)
+console.log(avarageGrade)
 
 // ---- Verwachte uitkomsten:
 // averageGrade(grades) geeft 6.642857142857143
@@ -58,17 +133,21 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Zorg ervoor dat het gemiddelde cijfer dat wordt teruggegeven uit de functie netjes wordt afgerond op twee decimalen.
 // Tip: Google is your best friend!
 
-
+const avarageTwo = (gradeList) => {
+    let total = null
+    for (let i = 0; i < gradeList.length; i++) {
+        total += gradeList[i]
+    }
+    return total / gradeList.length
+}
+const avarageGradeTwo = avarageTwo(grades)
+const rounded = avarageGradeTwo.toFixed(2)
+console.log(rounded)
 
 
 /* Bonusopdracht: hoogste cijfer */
 
 /* 3a: Script schrijven  */
-// Schrijf een script die op basis van de grades array (hierboven) checkt wat het hoogst behaalde cijfer is. Je mag hier geen bestaande methoden voor gebruiken. Schrijf de stapjes eerst uit en vraag jezelf de volgende dingen af:
-// * Hoe kan ik iedere waarde van de array langsgaan?
-// * Op welke conditie moet ik checken?
-// * Hoe zorgt ik ervoor dat wanneer ik een cijfer tegenkom die aan de conditie voldoet, ik dit ergens kan opslaan?
-// Log het antwoord in de terminal.
 
 // ---- Verwachte uitkomst: 9
 
@@ -77,6 +156,18 @@ const grades = [9, 8, 5, 7, 7, 4, 9, 8, 8, 3, 6, 8, 5, 6];
 // Schrijf een functie genaamd highestGrade, die een array van cijfers verwacht (zoals grades) en het hoogste cijfer teruggeeft. Gebruik hiervoor jouw antwoord van 3a.
 // Zorg ervoor dat jouw functie ook werkt als we een andere array willen checken, zoals bijvoorbeeld: [6, 4, 5] of [8, 9, 4, 6, 10].
 // Log het antwoord in de terminal.
+
+const findHighestGrade = (gradeList) => {
+    let high = gradeList[0]
+    for (let i = 0; i < gradeList.length; i++) {
+        if (gradeList[i] > high) {
+            high = gradeList[i]
+        }
+    }
+    return high;
+}
+let highestGrade = findHighestGrade(gradesB)
+console.log(highestGrade)
 
 // ---- Verwachte uitkomsten:
 // highestGrade(grades) geeft 9
