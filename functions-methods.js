@@ -9,7 +9,14 @@
 // getEmailDomain("t.mellink@novi.nl") geeft novi.nl
 // getEmailDomain("a.wiersma@outlook.com") geeft outlook.com
 
+const domain = ["n.eeken@novi-education.nl", "t.mellink@novi.nl", "a.wiersma@outlook.com"]
 
+const giveDomain = (number) => {
+    const iNumber = 1 + domain[number].indexOf('@')
+    const domainName = domain[number].substring(iNumber, domain[number].length)
+    console.log(domainName)
+}
+giveDomain(2)
 
 
 /* Opdracht  2 */
@@ -20,7 +27,19 @@
 // typeOfEmail("novi.nlaapjesk@outlook.com") geeft geeft "Extern" <-- deze moet het ook doen!
 // typeOfEmail("a.wiersma@outlook.com") geeft "Extern"
 
-
+const email = ["n.eeken@novi-education.nl","t.mellink@novi.nl", "novi.nlaapjesk@outlook.com", "a.wiersma@outlook.com"]
+    const typeOfEmail = () =>{
+        for (let i = 0; i < email.length; i++) {
+        if (email[i].includes('@novi-education')) {
+            console.log(email[i] + ' ' + 'Student')
+        } else if (email[i].includes('@novi.nl')) {
+            console.log(email[i] + ' ' + 'Medewerker')
+        } else {
+            console.log(email[i] + ' ' + 'extern')
+        }
+    }
+}
+typeOfEmail()
 
 /* Opdracht  3 */
 // Schrijf een functie genaamd checkEmailValidity, die een emailadres verwacht en checkt of het emailadres valide is. De functie returned true of false, afhankelijk van de uitkomst.
@@ -34,3 +53,25 @@
 // checkEmailValidity("n.eekenanovi.nl") geeft false - want geen @
 // checkEmailValidity("n.eeken@novinl.") geeft false - want de punt mag niet als laatst
 // checkEmailValidity("tessmellink@novi,nl") geeft false - want er staat een komma in
+
+const eMailA = ["n.eeken@novi.nl", "tessmellink@novi.nl", "n.eekenanovi.nl", "n.eeken@novinl.", "tessmellink@novi,nl"]
+console.log(eMailA)
+const eMailCheck = () => {
+    for (let i = 0; i < eMailA.length; i++) {
+        if (eMailA[i].includes('@')) {
+            if (eMailA[i].includes(',')) {
+
+                console.log('geen , gebruiken')
+            } else if (eMailA[i].charAt(eMailA[i].length - 1) === '.') {
+                console.log('. op het eind')
+
+            }
+        } else {
+            console.log('Geen @')
+        }
+    }
+
+}
+
+eMailCheck()
+console.log('hallo')
